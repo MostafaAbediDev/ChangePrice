@@ -8,12 +8,12 @@ namespace ProductManagement.Domain.ProductAgg
         public string? PictureAlt { get; private set; }
         public string? PictureTitle { get; private set; }
         public string? Name { get; private set; }
-        public decimal PriceInIran { get; private set; }
-        public decimal PriceInUSD { get; private set; }
-        public decimal PriceInAED { get; private set; }
+        public long PriceInIran { get; private set; }
+        //public decimal PriceInUSD { get; private set; }
+        //public decimal PriceInAED { get; private set; }
 
         public Product(string? picture, string? pictureAlt, string? pictureTitle, 
-            string? name, decimal priceInIran)
+            string? name, long priceInIran)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
@@ -23,7 +23,7 @@ namespace ProductManagement.Domain.ProductAgg
         }
 
         public void Edit(string? picture, string? pictureAlt, string? pictureTitle,
-            string? name, decimal priceInIran)
+            string? name, long priceInIran)
         {
             if(!string.IsNullOrWhiteSpace(picture))
                 Picture = picture;

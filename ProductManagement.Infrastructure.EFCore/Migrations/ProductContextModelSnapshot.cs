@@ -50,14 +50,8 @@ namespace ProductManagement.Infrastructure.EFCore.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<decimal>("PriceInAED")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("PriceInIran")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("PriceInUSD")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<long>("PriceInIran")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

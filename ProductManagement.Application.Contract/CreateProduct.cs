@@ -15,7 +15,7 @@ namespace ProductManagement.Application.Contract
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string? Name { get;  set; }
-        public decimal PriceInIran { get;  set; }
+        public long PriceInIran { get;  set; }
 
     }
 }
