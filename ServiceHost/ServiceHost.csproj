@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\01_FrameWork\01_FrameWork.csproj" />
+    <ProjectReference Include="..\02_ChangePriceQuery\02_ChangePriceQuery.csproj" />
     <ProjectReference Include="..\ProductManagement.Configuration\ProductManagement.Configuration.csproj" />
   </ItemGroup>
 

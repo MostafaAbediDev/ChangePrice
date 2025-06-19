@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>_02_ChangePriceQuery</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\02_ChangePriceQuery\02_ChangePriceQuery.csproj" />
-    <ProjectReference Include="..\ProductManagement.Application\ProductManagement.Application.csproj" />
     <ProjectReference Include="..\ProductManagement.Infrastructure.EFCore\ProductManagement.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 

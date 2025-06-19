@@ -8,22 +8,22 @@ namespace ProductManagement.Domain.ProductAgg
         public string? PictureAlt { get; private set; }
         public string? PictureTitle { get; private set; }
         public string? Name { get; private set; }
+        public string? UnitOfMeasurement { get; private set; }
         public long PriceInIran { get; private set; }
-        //public decimal PriceInUSD { get; private set; }
-        //public decimal PriceInAED { get; private set; }
 
         public Product(string? picture, string? pictureAlt, string? pictureTitle, 
-            string? name, long priceInIran)
+            string? name, string? unitOfMeasurement, long priceInIran)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Name = name;
+            UnitOfMeasurement = unitOfMeasurement;
             PriceInIran = priceInIran;
         }
 
         public void Edit(string? picture, string? pictureAlt, string? pictureTitle,
-            string? name, long priceInIran)
+            string? name, string? unitOfMeasurement, long priceInIran )
         {
             if(!string.IsNullOrWhiteSpace(picture))
                 Picture = picture;
@@ -31,6 +31,7 @@ namespace ProductManagement.Domain.ProductAgg
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Name = name;
+            UnitOfMeasurement = unitOfMeasurement;
             PriceInIran = priceInIran;
         }
     }

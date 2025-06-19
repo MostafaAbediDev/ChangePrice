@@ -1,0 +1,17 @@
+﻿@model List<_02_ChangePriceQuery.Contract.Product.ProductQueryModel>
+
+@foreach(var item in Model)
+{
+    <section class="container">
+        <div class="row justify-content-center justify-content-sm-between align-items-center " id="root">
+            <div class="card card-h bg-info-subtle col-9 col-sm-6 col-md-4 my-3">
+                <div class="card-body shadow">
+                    <img src="~/ProductPicture/@item.Picture" alt="@item.PictureAlt" title="@item.PictureTitle" class="card-img-top img-fluid ax">
+                    <h5 class="card-title text-danger">@item.Name</h5>
+                    <p class="card-text">@item.PriceInIran : تومان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

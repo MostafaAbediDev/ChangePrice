@@ -21,6 +21,7 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 Name = x.Name,
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
+                UnitOfMeasurement = x.UnitOfMeasurement,
                 PriceInIran = x.PriceInIran
 
             }).FirstOrDefault(x => x.Id == id);
@@ -33,6 +34,7 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 Id = x.Id,
                 Name = x.Name,
                 Picture = x.Picture,
+                UnitOfMeasurement = x.UnitOfMeasurement,
                 PriceInIran = x.PriceInIran
             }).ToList();
         }
@@ -45,10 +47,15 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 Name = x.Name,
                 Picture = x.Picture,
                 PriceInIran = x.PriceInIran,
+                UnitOfMeasurement = x.UnitOfMeasurement,
                 CreationDate = x.CreationDate.ToString()
             });
+
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
+
+            if (!string.IsNullOrWhiteSpace(searchModel.UnitOfMeasurement))
+                query = query.Where(x => x.UnitOfMeasurement.Contains(searchModel.UnitOfMeasurement));
 
             return query.OrderByDescending(x => x.Id).ToList();
         }

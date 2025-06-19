@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement.Configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{186CD616-AA8B-4783-B70F-2D5ECFC11841}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_ChangePriceQuery", "02_ChangePriceQuery\02_ChangePriceQuery.csproj", "{30FD06C5-CD7E-44A6-9985-6F598C5752F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{186CD616-AA8B-4783-B70F-2D5ECFC11841}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{186CD616-AA8B-4783-B70F-2D5ECFC11841}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{186CD616-AA8B-4783-B70F-2D5ECFC11841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30FD06C5-CD7E-44A6-9985-6F598C5752F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30FD06C5-CD7E-44A6-9985-6F598C5752F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30FD06C5-CD7E-44A6-9985-6F598C5752F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30FD06C5-CD7E-44A6-9985-6F598C5752F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,4 @@
+using _02_ChangePriceQuery.Contract.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,16 +6,16 @@ namespace ServiceHost.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly IProductQuery _productQuery;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IProductQuery productQuery)
         {
-            _logger = logger;
+            _productQuery = productQuery;
         }
 
         public void OnGet()
         {
-
+            _productQuery.GetProducts();
         }
     }
 }

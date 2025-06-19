@@ -26,7 +26,7 @@ namespace ProductManagement.Application
             var fileName = _fileUploader.Upload(command.Picture, picturePath);
 
             var product = new Product(fileName, command.PictureAlt, command.PictureTitle, 
-                command.Name, command.PriceInIran);
+                command.Name, command.UnitOfMeasurement, command.PriceInIran);
 
             _productRepository.Create(product);
             _productRepository.SaveChanges();
@@ -48,7 +48,7 @@ namespace ProductManagement.Application
             var picturePath = "ProductPicture";
             var fileName = _fileUploader.Upload(command.Picture, picturePath);
 
-            product.Edit(fileName, command.PictureAlt, command.PictureTitle, command.Name, command.PriceInIran);
+            product.Edit(fileName, command.PictureAlt, command.PictureTitle, command.Name, command.UnitOfMeasurement, command.PriceInIran);
 
             _productRepository.SaveChanges();
             return operation.Succedded();

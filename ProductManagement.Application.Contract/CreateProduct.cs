@@ -15,6 +15,7 @@ namespace ProductManagement.Application.Contract
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string? Name { get;  set; }
+        public string? UnitOfMeasurement { get; set; }
         public long PriceInIran { get;  set; }
 
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using _02_ChangePriceQuery.Contract.Product;
+using _02_ChangePriceQuery.Query;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProductManagement.Application;
 using ProductManagement.Application.Contract;
@@ -14,6 +16,8 @@ namespace ProductManagement.Configuration
         {
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductApplication, ProductApplication>();
+
+            services.AddTransient<IProductQuery, ProductQuery>();
 
             services.AddDbContext<ProductContext>(x => x.UseSqlServer(connectionString));
         }
