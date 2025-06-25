@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductManagement.Infrastructure.EFCore;
 
@@ -11,9 +12,11 @@ using ProductManagement.Infrastructure.EFCore;
 namespace ProductManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20250622125707_ExchangeRatesAdded")]
+    partial class ExchangeRatesAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,11 +39,14 @@ namespace ProductManagement.Infrastructure.EFCore.Migrations
                     b.Property<long>("AedChange")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("AedDate")
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PersianDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreationDate")
+                    b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("Usd")
@@ -48,10 +54,6 @@ namespace ProductManagement.Infrastructure.EFCore.Migrations
 
                     b.Property<long>("UsdChange")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("UsdDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

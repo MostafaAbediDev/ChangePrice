@@ -1,4 +1,4 @@
-﻿namespace ProductManagement.Application.Contract
+﻿namespace ProductManagement.Application.Contract.Products
 {
     public class EditProduct : CreateProduct
     {

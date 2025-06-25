@@ -1,4 +1,4 @@
-﻿@using ProductManagement.Application.Contract
+﻿@using ProductManagement.Application.Contract.Products
 @model CreateProduct
 @{
 }
@@ -19,7 +19,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Name" class="control-label">نام</label>
-                    <input type="text" class="form-control" asp-for="Name" onchange="makeSlug('Name', 'Slug')">
+                    <input type="text" class="form-control" asp-for="Name">
                     <span asp-validation-for="Name" class="error"></span>
                 </div>
             </div>
@@ -58,7 +58,25 @@
                         <span asp-validation-for="PriceInIran" class="error"></span>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UnitOfMeasurement" class="control-label">واحد اندازه گیری</label>
+                        <input type="text" class="form-control" asp-for="UnitOfMeasurement">
+                        <span asp-validation-for="UnitOfMeasurement" class="error"></span>
+                    </div>
+                </div>
 
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="DefaultCount" class="control-label">تعداد</label>
+                        <input type="text" class="form-control" asp-for="DefaultCount">
+                        <span asp-validation-for="DefaultCount" class="error"></span>
+                    </div>
+                </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>

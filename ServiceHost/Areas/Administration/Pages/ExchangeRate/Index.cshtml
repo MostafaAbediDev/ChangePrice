@@ -1,0 +1,70 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.ExchangeRate.IndexModel
+@{
+    ViewData["Title"] = "نرخ لحظه‌ای ارز";
+}
+
+<h2>نرخ لحظه‌ای ارز</h2>
+
+@if (Model.ExchangeRates != null)
+{
+    <div class="row" id="ProductCategoriesDiv">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">لیست نرخ ارز ها</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="datatable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>قیمت دلار</th>
+                                        <th>تغییرات دلار</th>
+                                        <th>تاریخ نرخ دلار</th>
+                                        <th>قیمت درهم</th>
+                                        <th>تغییرات درهم</th>
+                                        <th>تاریخ نرخ درهم</th>
+                                        <th>تاریخ تولید</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ExchangeRates)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Usd</td>
+                                            <td>@item.UsdChange</td>
+                                            <td>@item.UsdDate</td>
+                                            <td>@item.Aed</td>
+                                            <td>@item.AedChange</td>
+                                            <td>@item.AedDate</td>
+                                            <td>@item.CreationDate</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+    <script src="~/adminTheme/assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminTheme/assets/datatables/dataTables.bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+        });
+    </script>
+    }
+}
+else
+{
+    <p>هیچ داده‌ای ثبت نشده است.</p>
+}

@@ -1,6 +1,6 @@
 ﻿using _0_Framework.Application;
 
-namespace ProductManagement.Application.Contract
+namespace ProductManagement.Application.Contract.Products
 {
     public interface IProductApplication
     {

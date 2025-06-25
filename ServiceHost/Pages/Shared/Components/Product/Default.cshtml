@@ -1,17 +1,83 @@
 ﻿@model List<_02_ChangePriceQuery.Contract.Product.ProductQueryModel>
 
-@foreach(var item in Model)
-{
-    <section class="container">
-        <div class="row justify-content-center justify-content-sm-between align-items-center " id="root">
-            <div class="card card-h bg-info-subtle col-9 col-sm-6 col-md-4 my-3">
-                <div class="card-body shadow">
-                    <img src="~/ProductPicture/@item.Picture" alt="@item.PictureAlt" title="@item.PictureTitle" class="card-img-top img-fluid ax">
-                    <h5 class="card-title text-danger">@item.Name</h5>
-                    <p class="card-text">@item.PriceInIran : تومان</p>
-                </div>
-            </div>
-        </div>
-    </section>
-}
+<h2>محصولات</h2>
 
+<div class="product-grid">
+    @foreach (var product in Model)
+    {
+        <div class="product-card">
+            <img src="~/ProductPicture/@product.Picture" alt="@product.PictureAlt" title="@product.PictureTitle" class="product-image" />
+            <h4>@product.Name</h4>
+            <p>واحد: @product.UnitOfMeasurement</p>
+            <p>قیمت پایه (تومان): @product.PriceInIran.ToString("N0")</p>
+            <p>قیمت پایه (دلار): @Math.Round(product.PriceInIran / product.UsdRate, 2) $</p>
+            <p>قیمت پایه (درهم): @Math.Round(product.PriceInIran / product.AedRate, 2)</p>
+
+            <label>تعداد دلخواه:</label>
+            <input type="number"
+                   min="1"
+                   value="@product.DefaultCount"
+                   id="count-@product.Id"
+                   data-defaultcount="@product.DefaultCount"
+                   onchange="updatePrice(@product.Id, @product.PriceInIran, @Math.Round(product.PriceInIran / product.UsdRate, 2), @Math.Round(product.PriceInIran / product.AedRate, 2) )" />
+
+            <p>
+                قیمت نهایی:
+                <span id="finalPrice-@product.Id">@((product.DefaultCount * product.PriceInIran).ToString("N0"))</span> تومان
+            </p>
+            <p>
+                دلار:
+                <span id="finalPriceUsd-@product.Id">@((product.DefaultCount * (product.PriceInIran / product.UsdRate)).ToString("N2"))</span> $
+            </p>
+            <p>
+                درهم:
+                <span id="finalPriceAed-@product.Id">@((product.DefaultCount * (product.PriceInIran / product.AedRate)).ToString("N2"))</span> AED
+            </p>
+        </div>
+    }
+</div>
+
+<style>
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+    }
+
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+</style>
+
+<script>
+    function updatePrice(id, unitPrice, usdRate, aedRate) {
+        const countInput = document.getElementById(`count-${id}`);
+        const count = parseInt(countInput.value);
+        const max = parseInt(countInput.dataset.defaultcount);
+
+        const validCount = Math.min(count, max);
+
+        if (count > max) {
+            alert("این مقدار بیش از حد مجاز است.");
+            countInput.value = max;
+        }
+
+        const finalRial = validCount * unitPrice;
+        const finalUsd = validCount * usdRate;
+        const finalAed = validCount * aedRate;
+
+        document.getElementById(`finalPrice-${id}`).innerText = finalRial.toLocaleString();
+        document.getElementById(`finalPriceUsd-${id}`).innerText = finalUsd.toFixed(2);
+        document.getElementById(`finalPriceAed-${id}`).innerText = finalAed.toFixed(2);
+    }
+</script>

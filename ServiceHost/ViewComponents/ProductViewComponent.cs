@@ -1,5 +1,6 @@
 ﻿using _02_ChangePriceQuery.Contract.Product;
 using Microsoft.AspNetCore.Mvc;
+using ProductManagement.Application.Contract.ExchangeRate;
 
 namespace ServiceHost.ViewComponents
 {
@@ -14,8 +15,9 @@ namespace ServiceHost.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var Products = _productQuery.GetProducts();
-            return View(Products);
+            var products = _productQuery.GetProducts();
+            return View(products);
         }
     }
 }
+

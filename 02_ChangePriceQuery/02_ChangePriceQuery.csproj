@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProductManagement.Application\ProductManagement.Application.csproj" />
     <ProjectReference Include="..\ProductManagement.Infrastructure.EFCore\ProductManagement.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 

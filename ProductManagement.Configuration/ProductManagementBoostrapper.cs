@@ -3,7 +3,9 @@ using _02_ChangePriceQuery.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProductManagement.Application;
-using ProductManagement.Application.Contract;
+using ProductManagement.Application.Contract.ExchangeRate;
+using ProductManagement.Application.Contract.Products;
+using ProductManagement.Domain.ExchangeRateAgg;
 using ProductManagement.Domain.ProductAgg;
 using ProductManagement.Infrastructure.EFCore;
 using ProductManagement.Infrastructure.EFCore.Repository;
@@ -16,6 +18,9 @@ namespace ProductManagement.Configuration
         {
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductApplication, ProductApplication>();
+
+            services.AddTransient<IExchangeRateRepository, ExchangeRateRepository>();
+            services.AddTransient<IExchangeRateService, ExchangeRateService>();
 
             services.AddTransient<IProductQuery, ProductQuery>();
 

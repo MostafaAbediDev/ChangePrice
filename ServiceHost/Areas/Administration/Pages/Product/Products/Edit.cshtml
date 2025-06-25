@@ -1,4 +1,4 @@
-﻿@using ProductManagement.Application.Contract
+﻿@using ProductManagement.Application.Contract.Products
 @model EditProduct
 @{
 }
@@ -57,6 +57,22 @@
                         <label asp-for="PriceInIran" class="control-label">قیمت</label>
                         <input type="text" class="form-control" asp-for="PriceInIran">
                         <span asp-validation-for="PriceInIran" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UnitOfMeasurement" class="control-label">واحد اندازه گیری</label>
+                        <input type="text" class="form-control" asp-for="UnitOfMeasurement">
+                        <span asp-validation-for="UnitOfMeasurement" class="error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="DefaultCount" class="control-label">تعداد</label>
+                        <input type="text" class="form-control" asp-for="DefaultCount">
+                        <span asp-validation-for="DefaultCount" class="error"></span>
                     </div>
                 </div>
                 <input type="hidden" asp-for="Id" value="@Model.Id" />

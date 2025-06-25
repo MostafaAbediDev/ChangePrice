@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductManagement.Infrastructure.EFCore;
 
@@ -11,9 +12,11 @@ using ProductManagement.Infrastructure.EFCore;
 namespace ProductManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20250621144545_CountAndTotalPriceRialAddedToProduct")]
+    partial class CountAndTotalPriceRialAddedToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,42 +24,6 @@ namespace ProductManagement.Infrastructure.EFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ProductManagement.Domain.ExchangeRateAgg.ExchangeRate", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("Aed")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("AedChange")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AedDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("Usd")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("UsdChange")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("UsdDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExchangeRates", (string)null);
-                });
 
             modelBuilder.Entity("ProductManagement.Domain.ProductAgg.Product", b =>
                 {
@@ -66,11 +33,11 @@ namespace ProductManagement.Infrastructure.EFCore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DefaultCount")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -90,6 +57,9 @@ namespace ProductManagement.Infrastructure.EFCore.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<long>("PriceInIran")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TotalPriceRial")
                         .HasColumnType("bigint");
 
                     b.Property<string>("UnitOfMeasurement")

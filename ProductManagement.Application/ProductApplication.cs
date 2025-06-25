@@ -1,6 +1,6 @@
 ﻿using _0_Framework.Application;
 using _0_FrameWork.Application;
-using ProductManagement.Application.Contract;
+using ProductManagement.Application.Contract.Products;
 using ProductManagement.Domain.ProductAgg;
 
 namespace ProductManagement.Application
@@ -26,7 +26,7 @@ namespace ProductManagement.Application
             var fileName = _fileUploader.Upload(command.Picture, picturePath);
 
             var product = new Product(fileName, command.PictureAlt, command.PictureTitle, 
-                command.Name, command.UnitOfMeasurement, command.PriceInIran);
+                command.Name, command.UnitOfMeasurement, command.PriceInIran, command.DefaultCount);
 
             _productRepository.Create(product);
             _productRepository.SaveChanges();
@@ -48,7 +48,8 @@ namespace ProductManagement.Application
             var picturePath = "ProductPicture";
             var fileName = _fileUploader.Upload(command.Picture, picturePath);
 
-            product.Edit(fileName, command.PictureAlt, command.PictureTitle, command.Name, command.UnitOfMeasurement, command.PriceInIran);
+            product.Edit(fileName, command.PictureAlt, command.PictureTitle, command.Name, 
+                command.UnitOfMeasurement, command.PriceInIran, command.DefaultCount);
 
             _productRepository.SaveChanges();
             return operation.Succedded();

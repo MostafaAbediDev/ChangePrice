@@ -1,5 +1,5 @@
 ﻿using _0_FrameWork.Infrastructure;
-using ProductManagement.Application.Contract;
+using ProductManagement.Application.Contract.Products;
 using ProductManagement.Domain.ProductAgg;
 
 namespace ProductManagement.Infrastructure.EFCore.Repository
@@ -22,7 +22,8 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 UnitOfMeasurement = x.UnitOfMeasurement,
-                PriceInIran = x.PriceInIran
+                PriceInIran = x.PriceInIran,
+                DefaultCount = x.DefaultCount
 
             }).FirstOrDefault(x => x.Id == id);
         }
@@ -35,7 +36,8 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 Name = x.Name,
                 Picture = x.Picture,
                 UnitOfMeasurement = x.UnitOfMeasurement,
-                PriceInIran = x.PriceInIran
+                PriceInIran = x.PriceInIran,
+                DefaultCount = x.DefaultCount
             }).ToList();
         }
 
@@ -48,6 +50,7 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 Picture = x.Picture,
                 PriceInIran = x.PriceInIran,
                 UnitOfMeasurement = x.UnitOfMeasurement,
+                DefaultCount = x.DefaultCount,
                 CreationDate = x.CreationDate.ToString()
             });
 

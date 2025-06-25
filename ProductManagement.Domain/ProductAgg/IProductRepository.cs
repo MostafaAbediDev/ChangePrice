@@ -1,5 +1,5 @@
 ﻿using _0_FrameWork.Domain;
-using ProductManagement.Application.Contract;
+using ProductManagement.Application.Contract.Products;
 
 namespace ProductManagement.Domain.ProductAgg
 {

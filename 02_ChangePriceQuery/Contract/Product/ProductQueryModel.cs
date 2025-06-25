@@ -8,6 +8,10 @@
         public string PictureTitle { get; set; }
         public string Name { get; set; }
         public string UnitOfMeasurement { get; set; }
+        public int DefaultCount { get; set; }
         public long PriceInIran { get; set; }
+        public decimal UsdRate { get; set; }
+        public decimal AedRate { get; set; }
+
     }
 }

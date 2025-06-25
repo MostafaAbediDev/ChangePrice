@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ProductManagement.Application.Contract;
+using ProductManagement.Application.Contract.Products;
 
 namespace ServiceHost.Areas.Administration.Pages.Product.Products
 {

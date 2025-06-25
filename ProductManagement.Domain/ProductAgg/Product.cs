@@ -10,9 +10,11 @@ namespace ProductManagement.Domain.ProductAgg
         public string? Name { get; private set; }
         public string? UnitOfMeasurement { get; private set; }
         public long PriceInIran { get; private set; }
+        public int DefaultCount { get; private set; }
+        
 
         public Product(string? picture, string? pictureAlt, string? pictureTitle, 
-            string? name, string? unitOfMeasurement, long priceInIran)
+            string? name, string? unitOfMeasurement, long priceInIran, int defaultCount)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
@@ -20,10 +22,11 @@ namespace ProductManagement.Domain.ProductAgg
             Name = name;
             UnitOfMeasurement = unitOfMeasurement;
             PriceInIran = priceInIran;
+            DefaultCount = defaultCount;
         }
 
         public void Edit(string? picture, string? pictureAlt, string? pictureTitle,
-            string? name, string? unitOfMeasurement, long priceInIran )
+            string? name, string? unitOfMeasurement, long priceInIran, int defaultCount)
         {
             if(!string.IsNullOrWhiteSpace(picture))
                 Picture = picture;
@@ -33,6 +36,13 @@ namespace ProductManagement.Domain.ProductAgg
             Name = name;
             UnitOfMeasurement = unitOfMeasurement;
             PriceInIran = priceInIran;
+            DefaultCount = defaultCount;
         }
+
+        public long CalculateTotalPrice(int userCount)
+        {
+            return PriceInIran * userCount;
+        }
+
     }
 }

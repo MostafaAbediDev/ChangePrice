@@ -9,5 +9,6 @@ namespace _0_FrameWork.Domain
         void Create(T entity);
         bool Exists(Expression<Func<T, bool>> expression);
         void SaveChanges();
+        Task SaveChangesAsync();
     }
 }
