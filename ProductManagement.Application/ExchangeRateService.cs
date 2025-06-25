@@ -25,7 +25,8 @@ namespace ProductManagement.Application
             var response = await _httpClient.GetStringAsync(apiUrl);
             var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(response);
 
-            if (_exchangeRateRepository.Exists(x => x.Usd == apiResponse.Usd.value && x.Aed == apiResponse.Aed.value))
+            if (_exchangeRateRepository.Exists(x => x.Usd == apiResponse.Usd.value && x.Aed == apiResponse.Aed.value
+                && x.UsdChange == apiResponse.Usd.change && x.AedChange == apiResponse.Aed.change))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
             var exchangeRate = new ExchangeRate(

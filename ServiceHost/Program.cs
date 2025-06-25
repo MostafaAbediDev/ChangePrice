@@ -1,8 +1,7 @@
-using _0_FrameWork.Application;
-using ProductManagement.Application;
+﻿using _0_FrameWork.Application;
+using Hangfire;
+using ProductManagement.Application.Contract.ExchangeRate;
 using ProductManagement.Configuration;
-using ProductManagement.Domain.ExchangeRateAgg;
-using ProductManagement.Infrastructure.EFCore.Repository;
 using ServiceHost;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +14,12 @@ ProductManagementBoostrapper.Configure(builder.Services, connectionString);
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 builder.Services.AddHttpClient(); 
 builder.Services.AddRazorPages();
+
+builder.Services.AddHangfire(config =>
+{
+    config.UseSqlServerStorage(connectionString);
+});
+builder.Services.AddHangfireServer();
 
 var app = builder.Build();
 
@@ -37,5 +42,13 @@ app.MapRazorPages()
    .WithStaticAssets();
 
 app.MapControllers();
+
+app.UseHangfireDashboard("/hangfire");
+
+RecurringJob.AddOrUpdate<IExchangeRateService>(
+    "TestFetchExchangeRateEveryMinute",
+    x => x.GetAndSaveExchangeRateAsync(),
+    Cron.Daily(6)
+);
 
 app.Run();
