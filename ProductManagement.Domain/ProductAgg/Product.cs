@@ -11,7 +11,8 @@ namespace ProductManagement.Domain.ProductAgg
         public string? UnitOfMeasurement { get; private set; }
         public long PriceInIran { get; private set; }
         public int DefaultCount { get; private set; }
-        
+        public bool IsRemoved { get; private set; }
+
 
         public Product(string? picture, string? pictureAlt, string? pictureTitle, 
             string? name, string? unitOfMeasurement, long priceInIran, int defaultCount)
@@ -23,6 +24,7 @@ namespace ProductManagement.Domain.ProductAgg
             UnitOfMeasurement = unitOfMeasurement;
             PriceInIran = priceInIran;
             DefaultCount = defaultCount;
+            IsRemoved = false;
         }
 
         public void Edit(string? picture, string? pictureAlt, string? pictureTitle,
@@ -39,9 +41,14 @@ namespace ProductManagement.Domain.ProductAgg
             DefaultCount = defaultCount;
         }
 
-        public long CalculateTotalPrice(int userCount)
+        public void Remove()
         {
-            return PriceInIran * userCount;
+            IsRemoved = true;
+        }
+
+        public void Restore()
+        {
+            IsRemoved = false;
         }
 
     }

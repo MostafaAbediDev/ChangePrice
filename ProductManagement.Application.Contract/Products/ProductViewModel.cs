@@ -8,6 +8,7 @@
         public string? UnitOfMeasurement { get; set; }
         public long PriceInIran { get; set; }
         public int DefaultCount { get; set; }
+        public bool IsRemoved { get; set; }
         public string CreationDate { get; set; }
     }
 }

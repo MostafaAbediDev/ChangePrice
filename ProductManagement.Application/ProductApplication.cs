@@ -65,6 +65,30 @@ namespace ProductManagement.Application
             return _productRepository.GetProducts();
         }
 
+        public OperationResult Remove(long id)
+        {
+            var operation = new OperationResult();
+            var slide = _productRepository.Get(id);
+            if (slide == null)
+                return operation.Failed(ApplicationMessages.RecordNotFound);
+
+            slide.Remove();
+            _productRepository.SaveChanges();
+            return operation.Succedded();
+        }
+
+        public OperationResult Restore(long id)
+        {
+            var operation = new OperationResult();
+            var slide = _productRepository.Get(id);
+            if (slide == null)
+                return operation.Failed(ApplicationMessages.RecordNotFound);
+
+            slide.Restore();
+            _productRepository.SaveChanges();
+            return operation.Succedded();
+        }
+
         public List<ProductViewModel> Search(ProductSearchModel searchModel)
         {
             return _productRepository.Search(searchModel);

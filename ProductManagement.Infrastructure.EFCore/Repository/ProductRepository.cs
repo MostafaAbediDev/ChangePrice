@@ -37,6 +37,7 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 Picture = x.Picture,
                 UnitOfMeasurement = x.UnitOfMeasurement,
                 PriceInIran = x.PriceInIran,
+                IsRemoved = x.IsRemoved,
                 DefaultCount = x.DefaultCount
             }).ToList();
         }
@@ -51,6 +52,7 @@ namespace ProductManagement.Infrastructure.EFCore.Repository
                 PriceInIran = x.PriceInIran,
                 UnitOfMeasurement = x.UnitOfMeasurement,
                 DefaultCount = x.DefaultCount,
+                IsRemoved = x.IsRemoved,    
                 CreationDate = x.CreationDate.ToString()
             });
 

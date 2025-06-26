@@ -17,11 +17,11 @@ namespace _02_ChangePriceQuery.Query
 
         public List<ProductQueryModel> GetProducts()
         {
-            _exchangeRateService.GetAndSaveExchangeRateAsync().GetAwaiter().GetResult();
+            //_exchangeRateService.GetAndSaveExchangeRateAsync().GetAwaiter().GetResult();
 
             var exchangeRate = _exchangeRateService.GetRate().OrderByDescending(x => x.Id).FirstOrDefault();
 
-            var products = _context.Products.ToList();
+            var products = _context.Products.Where(x => x.IsRemoved == false).ToList();
 
             var query = products.Select(x => new ProductQueryModel
             {

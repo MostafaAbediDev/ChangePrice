@@ -6,6 +6,8 @@ namespace ProductManagement.Application.Contract.Products
     {
         OperationResult Create(CreateProduct command);
         OperationResult Edit(EditProduct command);
+        OperationResult Remove(long id);
+        OperationResult Restore(long id);
         EditProduct GetDetails(long id);
         List<ProductViewModel> Search(ProductSearchModel searchModel);
         List<ProductViewModel> GetProducts();
