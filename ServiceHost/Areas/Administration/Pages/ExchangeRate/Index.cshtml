@@ -1,18 +1,19 @@
 ﻿@page
 @model ServiceHost.Areas.Administration.Pages.ExchangeRate.IndexModel
+
 @{
-    ViewData["Title"] = "نرخ لحظه‌ای ارز";
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "نرخ لحظه‌ای ارز ها";
 }
 
-<h2>نرخ لحظه‌ای ارز</h2>
 
 @if (Model.ExchangeRates != null)
 {
-    <div class="row" id="ProductCategoriesDiv">
+    <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">لیست نرخ ارز ها</h3>
+                    <h3 class="panel-title">لیست نرخ دلار و درهم</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -27,7 +28,7 @@
                                         <th>قیمت درهم</th>
                                         <th>تغییرات درهم</th>
                                         <th>تاریخ نرخ درهم</th>
-                                        <th>تاریخ تولید</th>
+                                        <th>تاریخ اخذ نرخ ها</th>
                                     </tr>
                                 </thead>
                                 <tbody>
